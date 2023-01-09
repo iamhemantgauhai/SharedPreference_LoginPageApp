@@ -30,8 +30,8 @@ class SplashScreenState extends State<SplashScreen> {
       color: Colors.white,
       child: Image.network(
         'https://lh3.googleusercontent.com/p/AF1QipO5w1q1PWz4SIVuu6XO4z_ArWipslqu5K2mSe1_=w768-h768-n-o-v1',
-        height: 50,
-        width: 50,
+        height: 25,
+        width: 25,
       ),
     );
   }

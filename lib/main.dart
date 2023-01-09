@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mm_tracker_app/screens/login/login_screen.dart';
-// import 'screens/splash/splash_screen.dart';
 
 void main() {
   runApp(
