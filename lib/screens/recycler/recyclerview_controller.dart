@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
+
+import '../login/login_screen.dart';
 class RecyclerViewController extends StatefulWidget {
   const RecyclerViewController({Key? key}) : super(key: key);
   @override
@@ -19,21 +21,33 @@ class _RecyclerViewControllerState extends State<RecyclerViewController> {
                 return ListTile(
                     leading: const Image(
                         image: NetworkImage(
-                            """https://cms-assets.tutsplus.com/uploads/users/369/
-                            posts/26629/preview_image/whats-new-in-android-studio-
-                            2.2.jpg""")),
+                            "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")),
                     title: const Image(
                         image: NetworkImage(
-                            """https://cms-assets.tutsplus.com/uploads/users/369/
-                            posts/26629/preview_image/whats-new-in-android-studio-
-                            2.2.jpg""")),
+                            "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")),
                     subtitle: Center(child: Text('Image $index')),
                     trailing: const Image(
                         image: NetworkImage(
-                            """https://cms-assets.tutsplus.com/uploads/users/369/
-                            posts/26629/preview_image/whats-new-in-android-studio-
-                            2.2.jpg""")));
+                            "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")));
               }))
-    ]));
+    ,Container(
+              height: 80,
+              width: 300,
+              color: Colors.white,
+              child: Stack(children: [
+                Center(
+                    child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext ctx) =>
+                                  const LoginScreen()));
+                        },
+                        style: ButtonStyle(
+                            backgroundColor:
+                            MaterialStateProperty.all(Colors.red)),
+                        child: Text("Log Out".toUpperCase())))
+              ]))]));
   }
 }
