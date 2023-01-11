@@ -92,13 +92,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   MaterialPageRoute(
                                       builder: (BuildContext ctx) =>
                                           const WelcomeScreen()));
-                            }
-                          }
-                          if (employeeID.text.isEmpty != true &&
-                              password.text.isEmpty != true) {
-                            if ((employeeID.text.length == 6) == true &&
-                                (password.text.length >= 8) == true &&
-                                (regex.hasMatch(password.text)) == true) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       behavior: SnackBarBehavior.floating,

@@ -15,7 +15,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       appBar: AppBar(
         title: const Text('Recycler View'),
       ),
-      body: const RecyclerViewScreen()
+      body: const RecyclerViewScreen(),
     );
   }
 }

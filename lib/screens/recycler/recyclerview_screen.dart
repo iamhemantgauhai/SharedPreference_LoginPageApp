@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:mm_tracker_app/screens/recycler/recyclerview_controller.dart';
 
 class RecyclerViewScreen extends StatefulWidget {
   const RecyclerViewScreen({Key? key}) : super(key: key);
@@ -8,32 +10,45 @@ class RecyclerViewScreen extends StatefulWidget {
 }
 
 class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
+  TextEditingController myNumber = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: ListView.builder(
-          itemCount: 8,
-          itemBuilder: (context, index) {
-            return ListTile(
-              leading: const Image(
-                image: NetworkImage(
-                    "https://blog.logrocket.com/wp-content/uploads/2021/05/intro-dart-flutter-feature.png"),
+      body: Column(
+        children: [
+          Container(
+            color: Colors.white,
+            height: 80,
+            width: 300,
+            child: TextFormField(
+              controller: myNumber,
+              keyboardType: TextInputType.number,
+              inputFormatters: <TextInputFormatter>[
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              cursorColor: Colors.blue,
+              decoration: const InputDecoration(
+                labelText: "Take Any Number",
+                hintStyle: TextStyle(color: Colors.black),
               ),
-              title: const Image(
-                image: NetworkImage(
-                    "https://blog.logrocket.com/wp-content/uploads/2021/05/intro-dart-flutter-feature.png"),
-              ),
-              subtitle: Center(
-                child: Text('Image $index'),
-              ),
-              trailing: const Image(
-                image: NetworkImage(
-                    "https://blog.logrocket.com/wp-content/uploads/2021/05/intro-dart-flutter-feature.png"),
-              ),
-            );
-          },
-        ),
+            ),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              if (myNumber.text.isNotEmpty == true) {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext ctx) =>
+                            const RecyclerViewController()));
+
+              }
+            },
+            child: Text(
+              "Enter".toUpperCase(),
+            ),
+          ),
+        ],
       ),
     );
   }
