@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:mm_tracker_app/screens/login/login_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key});
+class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
 
+  @override
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('You Logged In'),
+        title: const Text('Recycler View'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-          const Text('Employee ID: '),
-          const Text('Password: '),
-          ElevatedButton(
-            onPressed: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              prefs.remove('Employee ID');
-              Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: ( BuildContext ctx) => const LoginScreen()));
-            },
-            child: const Text('Logout'),
-          ),
-        ],),
-      ),
+      body: const RecyclerViewScreen()
     );
   }
 }

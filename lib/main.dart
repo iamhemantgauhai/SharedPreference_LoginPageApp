@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mm_tracker_app/screens/login/login_screen.dart';
+import 'package:mm_tracker_app/screens/welcome/welcome_screen.dart';
+// import 'package:mm_tracker_app/screens/login/login_screen.dart';
 
 void main() {
   runApp(
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: LoginScreen(),
+      home: WelcomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }

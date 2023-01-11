@@ -2,26 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mm_tracker_app/screens/login/login_controller.dart';
 import 'package:mm_tracker_app/screens/welcome/welcome_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  SharedPreferences prefs = await SharedPreferences.getInstance();
-  var email = prefs.getString('Employee ID');
-  runApp(MaterialApp(home: email == null ? const LoginScreen() : const WelcomeScreen()));
-}
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final formGlobalKey = GlobalKey < FormState > ();
-  final storePassword = const Key('storePassword');
-  final storeID = const Key('storeID');
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 80,
               width: 300,
               child: TextFormField(
-                  key: storeID,
+                  controller: employeeID,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   validator: employeeIDValidate,
                   maxLength: 6,
@@ -69,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
               color: Colors.white,
               child: Form(
                   child: TextFormField(
-                      key: storePassword,
+                      controller: password,
                       autovalidateMode: AutovalidateMode.onUserInteraction,
                       validator: passwordValidate,
                       textInputAction: TextInputAction.done,
@@ -93,18 +82,36 @@ class _LoginScreenState extends State<LoginScreen> {
                 Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (BuildContext ctx) => const WelcomeScreen()));
-                          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          behavior: SnackBarBehavior.floating,
-                          margin: EdgeInsetsDirectional.all(20.0),
-                          dismissDirection: DismissDirection.down,
-                          backgroundColor: Colors.green,
-                          content: Text("Logged In")
-                        ));},
+                          if (employeeID.text.isEmpty != true &&
+                              password.text.isEmpty != true) {
+                            if ((employeeID.text.length == 6) == true &&
+                                (password.text.length >= 8) == true &&
+                                (regex.hasMatch(password.text)) == true) {
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (BuildContext ctx) =>
+                                          const WelcomeScreen()));
+                            }
+                          }
+                          if (employeeID.text.isEmpty != true &&
+                              password.text.isEmpty != true) {
+                            if ((employeeID.text.length == 6) == true &&
+                                (password.text.length >= 8) == true &&
+                                (regex.hasMatch(password.text)) == true) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      behavior: SnackBarBehavior.floating,
+                                      margin: EdgeInsetsDirectional.all(20.0),
+                                      dismissDirection: DismissDirection.down,
+                                      backgroundColor: Colors.green,
+                                      content: Text("Logged In")));
+                            }
+                          }
+                        },
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.red)),
+                                MaterialStateProperty.all(Colors.green)),
                         child: Text("Login".toUpperCase())))
               ])),
           Container(
