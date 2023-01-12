@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../login/login_screen.dart';
@@ -11,7 +10,6 @@ class RecyclerViewController extends StatefulWidget {
 }
 
 class _RecyclerViewControllerState extends State<RecyclerViewController> {
-  var previousData = const RecyclerViewScreen();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,14 +39,14 @@ class _RecyclerViewControllerState extends State<RecyclerViewController> {
             Center(
                 child: ElevatedButton(
                     onPressed: () async {
-                      Navigator.pushReplacement(
+                      Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (BuildContext ctx) =>
                                   const LoginScreen()));
                       SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.remove('emID');
+                      await SharedPreferences.getInstance();
+                      prefs.setBool('isLoggedIn',false);
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.red)),

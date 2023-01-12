@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mm_tracker_app/screens/recycler/recyclerview_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RecyclerViewScreen extends StatefulWidget {
   const RecyclerViewScreen({Key? key}) : super(key: key);
@@ -29,13 +30,16 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                   labelText: "Take Any Number",
                   hintStyle: TextStyle(color: Colors.black)))),
       ElevatedButton(
-          onPressed: () {
+          onPressed: () async{
             if (myNumber.text.isNotEmpty == true) {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (BuildContext ctx) =>
                           const RecyclerViewController()));
+              SharedPreferences prefs =
+              await SharedPreferences.getInstance();
+              prefs.setBool('isLoggedIn',true);
             }
           },
           child: Text("Enter".toUpperCase()))
