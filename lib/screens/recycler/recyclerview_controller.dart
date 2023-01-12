@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
 
 import '../login/login_screen.dart';
+
 class RecyclerViewController extends StatefulWidget {
   const RecyclerViewController({Key? key}) : super(key: key);
   @override
   State<RecyclerViewController> createState() => _RecyclerViewControllerState();
 }
+
 class _RecyclerViewControllerState extends State<RecyclerViewController> {
   var previousData = const RecyclerViewScreen();
   @override
@@ -29,25 +31,25 @@ class _RecyclerViewControllerState extends State<RecyclerViewController> {
                     trailing: const Image(
                         image: NetworkImage(
                             "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")));
-              }))
-    ,Container(
-              height: 80,
-              width: 300,
-              color: Colors.white,
-              child: Stack(children: [
-                Center(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext ctx) =>
+              })),
+      Container(
+          height: 80,
+          width: 300,
+          color: Colors.white,
+          child: Stack(children: [
+            Center(
+                child: ElevatedButton(
+                    onPressed: () async {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext ctx) =>
                                   const LoginScreen()));
-                        },
-                        style: ButtonStyle(
-                            backgroundColor:
-                            MaterialStateProperty.all(Colors.red)),
-                        child: Text("Log Out".toUpperCase())))
-              ]))]));
+                    },
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.red)),
+                    child: Text("Log Out".toUpperCase())))
+          ]))
+    ]));
   }
 }
