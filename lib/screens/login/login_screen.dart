@@ -16,8 +16,12 @@ class _LoginScreenState extends State<LoginScreen> {
     WidgetsFlutterBinding.ensureInitialized();
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var emID = prefs.getString(keyName);
-    runApp(MaterialApp(home: emID == null ? const RecyclerViewController() : const LoginScreen()));
+    runApp(MaterialApp(
+        home: emID == null
+            ? const RecyclerViewController()
+            : const LoginScreen()));
   }
+
   static const String keyName = "employee";
   var namedValue = "No Value Stored";
 
@@ -94,9 +98,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Stack(children: [
                 Center(
                     child: ElevatedButton(
-                        onPressed: () async{
-                          var prefs = await SharedPreferences.getInstance();
-                          prefs.setString(keyName, employeeID.text.toString());
+                        onPressed: () async {
                           if (employeeID.text.isEmpty != true &&
                               password.text.isEmpty != true) {
                             if ((employeeID.text.length == 6) == true &&
@@ -108,8 +110,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           builder: (BuildContext ctx) =>
                                               const WelcomeScreen()))
                                   .then((_) => setState(() {
-                                    password.clear();
-                                    employeeID.clear();
+                                        password.clear();
+                                        employeeID.clear();
                                       }));
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
@@ -118,6 +120,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       dismissDirection: DismissDirection.down,
                                       backgroundColor: Colors.green,
                                       content: Text("Logged In")));
+                              var prefs = await SharedPreferences.getInstance();
+                              prefs.setString(
+                                  keyName, employeeID.text.toString());
                             }
                           }
                         },
@@ -126,11 +131,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 MaterialStateProperty.all(Colors.green)),
                         child: Text("Login".toUpperCase())))
               ])),
-                Container(
-                    height: 80,
-                    width: 300,
-                    color: Colors.white,
-                    child: Center(child: Text(namedValue))),
+          Container(
+              height: 80,
+              width: 300,
+              color: Colors.white,
+              child: Center(child: Text(namedValue))),
           Container(
               height: 80,
               decoration: BoxDecoration(
@@ -152,12 +157,10 @@ class _LoginScreenState extends State<LoginScreen> {
         ]))));
   }
 
-  void getValue() async{
+  void getValue() async {
     var prefs = await SharedPreferences.getInstance();
     var getName = prefs.getString(keyName);
     namedValue = getName ?? "No Stored Data";
-    setState(() {
-
-    });
+    setState(() {});
   }
 }

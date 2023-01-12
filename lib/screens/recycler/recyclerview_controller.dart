@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../login/login_screen.dart';
 
@@ -45,6 +46,9 @@ class _RecyclerViewControllerState extends State<RecyclerViewController> {
                           MaterialPageRoute(
                               builder: (BuildContext ctx) =>
                                   const LoginScreen()));
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.remove('emID');
                     },
                     style: ButtonStyle(
                         backgroundColor: MaterialStateProperty.all(Colors.red)),
