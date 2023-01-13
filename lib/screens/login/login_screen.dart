@@ -4,13 +4,8 @@ import 'package:mm_tracker_app/screens/login/login_controller.dart';
 import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-  @override
-  State<LoginScreen> createState() => _LoginScreenState();
-}
-
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -89,11 +84,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext ctx) =>
-                                              const RecyclerViewScreen()))
-                                  .then((_) => setState(() {
+                                              RecyclerViewScreen()));
                                         password.clear();
                                         employeeID.clear();
-                                      }));
                               ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       behavior: SnackBarBehavior.floating,

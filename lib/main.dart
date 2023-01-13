@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mm_tracker_app/screens/login/login_screen.dart';
-import 'package:mm_tracker_app/screens/recycler/recyclerview_controller.dart';
+import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async{
@@ -10,15 +10,10 @@ void main() async{
   runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   final bool isLoggedIn;
   const MyApp({Key? key, required this.isLoggedIn}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,7 +22,7 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: widget.isLoggedIn ? const RecyclerViewController() : const LoginScreen()
+        home: isLoggedIn ? RecyclerViewScreen() : const LoginScreen()
     );
   }
 }
