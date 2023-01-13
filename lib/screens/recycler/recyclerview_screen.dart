@@ -52,33 +52,33 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                                 child: Container(
                                   padding: const EdgeInsets.all(16.0),
                                   width: double.infinity,
-                                  child: SingleChildScrollView(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: Column(
+                                  child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Expanded(
-                                          child: Container(
-                                              padding: const EdgeInsets.all(16.0),
-                                              width: double.infinity,
-                                              child: AlertDialog(
-                                                  title: ListView.builder(
-                                                      scrollDirection:
-                                                          Axis.vertical,
-                                                      shrinkWrap: true,
-                                                      itemCount: int.parse(
-                                                          myNumber.text),
-                                                      itemBuilder:
-                                                          (context, index) {
-                                                        return ListTile(
-                                                            leading: const Image(
-                                                                image: NetworkImage(
-                                                                    "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")),
-                                                            subtitle: Center(
-                                                                child: Text(
-                                                                    'Image ${index+1}')));
-                                                      })),
-                                            ),
+                                          child: SingleChildScrollView(
+                                            child: Container(
+                                                padding: const EdgeInsets.all(16.0),
+                                                width: double.infinity,
+                                                child: AlertDialog(
+                                                    title: ListView.builder(
+                                                        scrollDirection:
+                                                            Axis.vertical,
+                                                        shrinkWrap: true,
+                                                        itemCount: int.parse(
+                                                            myNumber.text),
+                                                        itemBuilder:
+                                                            (context, index) {
+                                                          return ListTile(
+                                                              leading: const Image(
+                                                                  image: NetworkImage(
+                                                                      "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")),
+                                                              subtitle: Center(
+                                                                  child: Text(
+                                                                      'Image ${index+1}')));
+                                                        })),
+                                              ),
+                                          ),
                                         ),
                                         Container(
                                             height: 80,
@@ -103,7 +103,6 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                                                       child: Text("Log Out".toUpperCase())))
                                             ]))],
                                     ),
-                                  ),
                                 ),
                               ));
                         });
