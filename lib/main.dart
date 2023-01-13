@@ -10,10 +10,15 @@ void main() async{
   runApp(MyApp(isLoggedIn: isLoggedIn));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final bool isLoggedIn;
   const MyApp({Key? key, required this.isLoggedIn}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: isLoggedIn ? const RecyclerViewController() : const LoginScreen()
+        home: widget.isLoggedIn ? const RecyclerViewController() : const LoginScreen()
     );
   }
 }
