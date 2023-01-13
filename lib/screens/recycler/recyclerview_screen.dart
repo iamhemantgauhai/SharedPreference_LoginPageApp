@@ -52,55 +52,57 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                                 child: Container(
                                   padding: const EdgeInsets.all(16.0),
                                   width: double.infinity,
-                                  child: Column(
-                                    children: [
-                                      Expanded(
-                                        child: SingleChildScrollView(
+                                  child: SingleChildScrollView(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Expanded(
                                           child: Container(
-                                            padding: const EdgeInsets.all(16.0),
-                                            width: double.infinity,
-                                            child: AlertDialog(
-                                                title: ListView.builder(
-                                                    scrollDirection:
-                                                        Axis.vertical,
-                                                    shrinkWrap: true,
-                                                    itemCount: int.parse(
-                                                        myNumber.text),
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return ListTile(
-                                                          leading: const Image(
-                                                              image: NetworkImage(
-                                                                  "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")),
-                                                          subtitle: Center(
-                                                              child: Text(
-                                                                  'Image ${index+1}')));
-                                                    })),
-                                          ),
+                                              padding: const EdgeInsets.all(16.0),
+                                              width: double.infinity,
+                                              child: AlertDialog(
+                                                  title: ListView.builder(
+                                                      scrollDirection:
+                                                          Axis.vertical,
+                                                      shrinkWrap: true,
+                                                      itemCount: int.parse(
+                                                          myNumber.text),
+                                                      itemBuilder:
+                                                          (context, index) {
+                                                        return ListTile(
+                                                            leading: const Image(
+                                                                image: NetworkImage(
+                                                                    "https://cms-assets.tutsplus.com/uploads/users/369/posts/26629/preview_image/whats-new-in-android-studio-2.2.jpg")),
+                                                            subtitle: Center(
+                                                                child: Text(
+                                                                    'Image ${index+1}')));
+                                                      })),
+                                            ),
                                         ),
-                                      ),
-                                      Container(
-                                          height: 80,
-                                          width: 300,
-                                          color: Colors.white,
-                                          child: Stack(children: [
-                                            Center(
-                                                child: ElevatedButton(
-                                                    onPressed: () async {
-                                                      Navigator.push(
-                                                          context,
-                                                          MaterialPageRoute(
-                                                              builder: (BuildContext ctx) =>
-                                                              const LoginScreen()));
-                                                      SharedPreferences prefs =
-                                                      await SharedPreferences.getInstance();
-                                                      prefs.setBool('isLoggedIn', true);
-                                                    },
-                                                    style: ButtonStyle(
-                                                        backgroundColor:
-                                                        MaterialStateProperty.all(Colors.red)),
-                                                    child: Text("Log Out".toUpperCase())))
-                                          ]))],
+                                        Container(
+                                            height: 80,
+                                            width: 300,
+                                            color: Colors.white,
+                                            child: Stack(children: [
+                                              Center(
+                                                  child: ElevatedButton(
+                                                      onPressed: () async {
+                                                        Navigator.push(
+                                                            context,
+                                                            MaterialPageRoute(
+                                                                builder: (BuildContext ctx) =>
+                                                                const LoginScreen()));
+                                                        SharedPreferences prefs =
+                                                        await SharedPreferences.getInstance();
+                                                        prefs.setBool('isLoggedIn', true);
+                                                      },
+                                                      style: ButtonStyle(
+                                                          backgroundColor:
+                                                          MaterialStateProperty.all(Colors.red)),
+                                                      child: Text("Log Out".toUpperCase())))
+                                            ]))],
+                                    ),
                                   ),
                                 ),
                               ));
