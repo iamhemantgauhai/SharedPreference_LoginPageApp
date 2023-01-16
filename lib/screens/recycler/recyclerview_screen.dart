@@ -40,7 +40,6 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
               onPressed: () async {
                 if (myNumber.text.isNotEmpty == true) {
                   showDialog(
-                      barrierDismissible: false,
                       context: context,
                       builder: (BuildContext context) {
                         return StatefulBuilder(builder: (context, setState) {
@@ -53,17 +52,14 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                                   padding: const EdgeInsets.all(16.0),
                                   width: double.infinity,
                                   child: Column(
-                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Expanded(
-                                          child: SingleChildScrollView(
-                                            child: Container(
+                                          child: Container(
                                                 padding: const EdgeInsets.all(16.0),
                                                 width: double.infinity,
-                                                child: AlertDialog(
+                                                child: SingleChildScrollView(
+                                                  child: AlertDialog(
                                                     title: ListView.builder(
-                                                        scrollDirection:
-                                                            Axis.vertical,
                                                         shrinkWrap: true,
                                                         itemCount: int.parse(
                                                             myNumber.text),
@@ -76,10 +72,9 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                                                               subtitle: Center(
                                                                   child: Text(
                                                                       'Image ${index+1}')));
-                                                        })),
+                                                        }))),
                                               ),
                                           ),
-                                        ),
                                         Container(
                                             height: 80,
                                             width: 300,
@@ -95,7 +90,7 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                                                                 const LoginScreen()));
                                                         SharedPreferences prefs =
                                                         await SharedPreferences.getInstance();
-                                                        prefs.setBool('isLoggedIn', true);
+                                                        prefs.setBool('isLoggedIn', false);
                                                       },
                                                       style: ButtonStyle(
                                                           backgroundColor:
