@@ -3,10 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:mm_tracker_app/screens/login/login_controller.dart';
 import 'package:mm_tracker_app/screens/recycler/recyclerview_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                                       context,
                                       MaterialPageRoute(
                                           builder: (BuildContext ctx) =>
-                                              RecyclerViewScreen()));
+                                              const RecyclerViewScreen()));
                                         password.clear();
                                         employeeID.clear();
                               ScaffoldMessenger.of(context).showSnackBar(

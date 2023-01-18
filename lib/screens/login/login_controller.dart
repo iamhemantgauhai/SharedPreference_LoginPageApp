@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-
 TextEditingController employeeID = TextEditingController();
 TextEditingController password = TextEditingController();
-
 var regex =
     RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 var employeeIDValidate = (currentValue) {
@@ -11,7 +9,6 @@ var employeeIDValidate = (currentValue) {
   if (nonNullValue.length != 6) {}
   return null;
 };
-
 var passwordValidate = (passCurrentValue) {
   var passNonNullValue = passCurrentValue ?? "";
   if (passNonNullValue.isEmpty) {

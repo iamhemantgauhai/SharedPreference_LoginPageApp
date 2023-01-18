@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../login/login_screen.dart';
-
 class RecyclerViewScreen extends StatefulWidget {
   const RecyclerViewScreen({super.key});
-
   @override
   State<RecyclerViewScreen> createState() => _RecyclerViewScreenState();
 }
-
 class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
   TextEditingController myNumber = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -108,6 +103,6 @@ class _RecyclerViewScreenState extends State<RecyclerViewScreen> {
                 }
               },
               child: Text("Enter".toUpperCase())),
-        ]));
+        ]))                                                                                                                                                                                                                                                                                                                                                                                                                                            ;
   }
 }
